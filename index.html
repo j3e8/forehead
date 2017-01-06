@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui" />
+    <title>Forehead Game</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.js"></script>
+    <script src="forehead.js"></script>
+    <link rel="stylesheet" href="forehead.css"/>
+  </head>
+  <body ng-click="handleClick($event)" ng-app="Forehead" ng-controller="guessController">
+
+    <div class="word" ng-show="currentWord">
+      {{ currentWord }}
+    </div>
+    <div class="time-left" ng-show="currentWord && timeLeft">
+      :{{ timeLeft }}
+    </div>
+
+    <div class="countdown" ng-show="countdown != null">
+      {{ countdown > 0 ? countdown : 'GO!' }}
+    </div>
+
+    <div ng-hide="currentCategory">
+      <h1>Choose a category</h1>
+      <div class="categories">
+        <div class="category" ng-repeat="cat in categoriesArray" ng-click="chooseCategory($event, cat)">
+          {{ cat }}
+        </div>
+      </div>
+    </div>
+
+    <div ng-show="!currentWord && !timeLeft">
+      <h1>Time's up!</h1>
+      <div class="words-displayed">
+        <div class="words-guessed">
+          <div class="word-guessed" ng-repeat="word in wordsGuessed">
+            {{ word }}
+          </div>
+        </div>
+        <div class="words-missed">
+          <div class="word-missed" ng-repeat="word in wordsMissed">
+            {{ word }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
