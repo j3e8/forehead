@@ -1,55 +1,41 @@
 var app = angular.module("Forehead", ['ngAnimate']);
-app.controller("guessController", ["$scope", "$http", "$timeout", function($scope, $http, $timeout) {
+app.controller("guessController", ["$scope", "$http", "$timeout", "WordService", function($scope, $http, $timeout, wordService) {
 
-  $scope.currentCategory = '';
-  $scope.currentWord = '';
-  $scope.countdown = null;
+  var TIME_PER_ROUND = 90;
 
-  $scope.wordsDisplayed = [];
-  $scope.wordsGuessed = [];
-  $scope.wordsMissed = [];
-  $scope.timeLeft = 30;
-
-  $scope.categories = {
-    'animals': [
-      'pig', 'horse', 'goat', 'cow', 'chicken', 'duck',
-      'cat', 'mouse', 'dog', 'donkey', 'rat', 'ferret',
-      'alligator', 'zebra', 'crocodile', 'elephant', 'ostrich',
-      'giraffe', 'hippopotamus', 'cheetah', 'lion', 'tiger', 'bear',
-      'snake', 'lizard', 'wolf', 'deer', 'mountain lion', 'parakeet',
-      'parrot', 'whale', 'octopus', 'trout', 'crayfish', 'lobster',
-      'crab', 'eel', 'shark', 'spider', 'praying mantis', 'squirrel',
-      'chipmunk', 'owl', 'eagle', 'rabbit', 'kangaroo', 'koala bear',
-      'sloth', 'monkey', 'hawk', 'falcon', 'goose', 'caterpillar', 'butterfly',
-      'moth', 'worm', 'beetle', 'cricket', 'clown fish', 'swordfish', 'squid',
-      'panther', 'coyote', 'fox', 'moose', 'elk', 'antelope', 'polar bear',
-      'penguin', 'rhinoceros', 'mongoose', 'turtle'
-    ],
-    'around the house': [
-      'computer', 'lamp','phone','window','door','table','piano','closet'
-    ],
-    'miscellaneous': [
-      'car', 'truck', 'train', 'airplane'
-    ]
-  };
   $scope.categoriesArray = [];
-  for (var property in $scope.categories) {
+  for (var property in wordService.categories) {
     $scope.categoriesArray.push(property);
   }
 
-  $scope.handleClick = function($event) {
-    if ($scope.currentCategory && $scope.countdown == null && !$scope.timeLeft) {
+  $scope.startGame = function() {
+    $scope.currentCategory = '';
+    $scope.currentWord = '';
+    $scope.countdown = null;
 
-    }
+    $scope.wordsDisplayed = [];
+    $scope.wordsGuessed = [];
+    $scope.wordsMissed = [];
+    $scope.timeLeft = TIME_PER_ROUND;
+  }
+
+  $scope.correct = function($event) {
     if ($scope.currentCategory && $scope.countdown == null && $scope.timeLeft) {
       $scope.wordsGuessed.push($scope.currentWord);
       $scope.pickNewWord();
     }
   }
 
+  $scope.skip = function($event) {
+    if ($scope.currentCategory && $scope.countdown == null && $scope.timeLeft) {
+      $scope.wordsMissed.push($scope.currentWord);
+      $scope.pickNewWord();
+    }
+  }
+
   $scope.pickNewWord = function() {
-    var idx = Math.floor( Math.random()  * $scope.categories[$scope.currentCategory].length );
-    $scope.currentWord = $scope.categories[$scope.currentCategory][idx];
+    var idx = Math.floor( Math.random()  * wordService.categories[$scope.currentCategory].length );
+    $scope.currentWord = wordService.categories[$scope.currentCategory][idx];
     $scope.wordsDisplayed.push($scope.currentWord);
   }
 
@@ -75,7 +61,7 @@ app.controller("guessController", ["$scope", "$http", "$timeout", function($scop
     $scope.wordsDisplayed = [];
     $scope.wordsGuessed = [];
     $scope.wordsMissed = [];
-    $scope.timeLeft = 5;
+    $scope.timeLeft = TIME_PER_ROUND;
     $scope.pickNewWord();
 
     $timeout($scope.tickTock, 1000);
@@ -96,4 +82,5 @@ app.controller("guessController", ["$scope", "$http", "$timeout", function($scop
     $scope.currentWord = null;
   }
 
+  $scope.startGame();
 }]);

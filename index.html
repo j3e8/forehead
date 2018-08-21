@@ -2,20 +2,39 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=no,minimal-ui"/>
     <title>Forehead Game</title>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.js"></script>
     <script src="forehead.js"></script>
+    <script src="WordService.js"></script>
     <link rel="stylesheet" href="forehead.css"/>
+    <script type="text/javascript">
+      window.addEventListener("load", function() {
+        if (document.body.requestFullScreen) {
+          document.body.requestFullScreen();
+        }
+        else if (document.body.webkitRequestFullScreen) {
+          document.body.webkitRequestFullScreen();
+        }
+      });
+    </script>
   </head>
-  <body ng-click="handleClick($event)" ng-app="Forehead" ng-controller="guessController">
+  <body ng-app="Forehead" ng-controller="guessController">
 
-    <div class="word" ng-show="currentWord">
-      {{ currentWord }}
-    </div>
-    <div class="time-left" ng-show="currentWord && timeLeft">
-      :{{ timeLeft }}
+    <div ng-show="currentWord">
+      <div class="correct-side" ng-click="correct()"></div>
+      <div class="incorrect-side" ng-click="skip()"></div>
+
+      <div class="correct-background"></div>
+      <div class="incorrect-background"></div>
+
+      <div class="word">
+        {{ currentWord }}
+      </div>
+      <div class="time-left" ng-show="timeLeft">
+        :{{ timeLeft }}
+      </div>
     </div>
 
     <div class="countdown" ng-show="countdown != null">
@@ -44,6 +63,10 @@
             {{ word }}
           </div>
         </div>
+      </div>
+
+      <div id="play-again">
+        <span ng-click="startGame()">Play again</span>
       </div>
     </div>
 
