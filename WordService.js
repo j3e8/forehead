@@ -64,7 +64,10 @@ app.service("WordService", function() {
       'jumping rope', 'playing basketball', 'playing baseball', 'playing the drums', 'riding a horse',
       'driving a car', 'running', 'dancing', 'doing ballet', 'boxing', 'doing karate or taekwondo',
       'watching tv', 'reading', 'skipping', 'lifting weights', 'surfing', 'sneezing', 'washing hands',
-      'taking a selfie'
+      'taking a selfie', 'riding a bike', 'flossing', 'throwing up', 'tying shoes', 'getting dressed',
+      'playing football', 'playing soccer', 'golfing', 'playing hopscotch', 'playing video games',
+      'climbing a ladder', 'shopping', 'making a sandwich', 'building a campfire', 'mailing a letter',
+      'playing ping pong', 'shaking hands'
     ],
     /*
     'miscellaneous': [
@@ -79,6 +82,11 @@ app.service("WordService", function() {
       'sea foam','sea green','chartreuse','ebony','almond','ivory','baby blue',
       'sky blue','hot pink','neon green','olive','mustard'
     ],
+    /*
+    'popular songs': [
+      'Twinkle Twinkle Little Star', 'Popcorn Popping', 'Give Said the Little Stream', 'Thunder'
+    ],
+    */
     'animated movies': [
       'Snow White and the Seven Dwarfs','Pinocchio','Fantasia','Dumbo','Bambi',
       'The Three Caballeros','Cinderella','Alice in Wonderland','Peter Pan',
@@ -98,7 +106,7 @@ app.service("WordService", function() {
       'Cars 3','Epic','Rise of the Guardians','Shrek','Madagascar','Kung Fu Panda',
       'Over the Hedge','Flushed Away','Monsters vs. Aliens','How to Train Your Dragon',
       'Megamind','Puss in Boots','The Croods','Turbo','Mr. Peabody & Sherman','Trolls',
-      'Captain Underpants','Despicable Me','Minions','Sing!'
+      'Captain Underpants','Despicable Me','Minions','Sing!','Coco'
     ],
     'Disney Characters': [
       'Jafar', 'Aladdin', 'Jasmine', 'Genie', 'Abu', 'Sultan', 'Iago', 'Magic Carpet',
