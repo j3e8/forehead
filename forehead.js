@@ -34,8 +34,11 @@ app.controller("guessController", ["$scope", "$http", "$timeout", "WordService",
   }
 
   $scope.pickNewWord = function() {
-    var idx = Math.floor( Math.random()  * wordService.categories[$scope.currentCategory].length );
-    $scope.currentWord = wordService.categories[$scope.currentCategory][idx];
+    $scope.currentWord = null;
+    while (!$scope.currentWord || $scope.wordsDisplayed.indexOf($scope.currentWord) > -1) {
+      var idx = Math.floor( Math.random()  * wordService.categories[$scope.currentCategory].length );
+      $scope.currentWord = wordService.categories[$scope.currentCategory][idx];
+    }
     $scope.wordsDisplayed.push($scope.currentWord);
   }
 
