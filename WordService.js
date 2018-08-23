@@ -67,7 +67,12 @@ app.service("WordService", function() {
       'taking a selfie', 'riding a bike', 'flossing', 'throwing up', 'tying shoes', 'getting dressed',
       'playing football', 'playing soccer', 'golfing', 'playing hopscotch', 'playing video games',
       'climbing a ladder', 'shopping', 'making a sandwich', 'building a campfire', 'mailing a letter',
-      'playing ping pong', 'shaking hands'
+      'playing ping pong', 'shaking hands', 'doing a cartwheel', 'swimming', 'rowing a boat', 'canoeing',
+      'doing a somersault',
+      'doing the worm', 'playing video games', 'flossing', 'grandpa', 'walking', 'backflip',
+      'sitting down', 'playing the piano', 'running', 'walking off a cliff', 'ping pong',
+      'dabbing', 'fishing', 'go home', 'being crazy', 'handstand', 'skipping', 'turn off the lights',
+      'eating cheese', 'doing the splits', 'singing'
     ],
     /*
     'miscellaneous': [
@@ -165,11 +170,13 @@ app.service("WordService", function() {
       'steal', 'wooden box', 'loft', 'barrel', 'safe', 'languages', 'characters', 'money',
       'Isaiah', 'danger', 'obedience', 'certificate'
     ],*/
+    /*
     'Book of Mormon': [
       'Nephi', 'Lehi', 'Mormon', 'Moroni', 'Jacob', 'Laman', 'Lemuel', 'Sam', 'Joseph',
       'Sariah', 'Bountiful', 'temple', 'Desolation', 'Ether', 'Brother of Jared', 'River Sidon',
       'Zarahemla'
     ]
+    */
   };
 
 
