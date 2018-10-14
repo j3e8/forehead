@@ -70,7 +70,7 @@ app.service("WordService", function() {
       'playing ping pong', 'shaking hands', 'doing a cartwheel', 'swimming', 'rowing a boat', 'canoeing',
       'doing a somersault',
       'doing the worm', 'playing video games', 'flossing', 'grandpa', 'walking', 'backflip',
-      'sitting down', 'playing the piano', 'running', 'walking off a cliff', 'ping pong',
+      'sitting down', 'playing the piano', 'running', 'walking off a cliff',
       'dabbing', 'fishing', 'go home', 'being crazy', 'handstand', 'skipping', 'turn off the lights',
       'eating cheese', 'doing the splits', 'singing'
     ],
